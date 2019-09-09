@@ -1,0 +1,120 @@
+.product-section {
+  padding: 28px 0;
+}
+
+.button-load-more {
+  display: block;
+  margin: 0 auto;
+  &.hidden {
+    display: none;
+  }
+}
+
+.layout-products {
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0 -15px 20px;
+  flex-wrap: wrap;
+  li {
+    padding: 20px 15px 0;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    &.hidden {
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 0;
+      padding-top: 0;
+    }
+  }
+}
+
+.product-card {
+  width: 270px;
+  box-sizing: border-box;
+  padding: 0 10px 10px;
+  display: block;
+  border: $global-border-width solid $global-border;
+  &:hover {
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.35);
+  }
+  .image {
+    width: 250px;
+    height: 250px;
+    margin: -20px auto 15px;
+    border: $global-border-width solid $global-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $global-background;
+    position: relative;
+  }
+  .sale, .new {
+    position: absolute;
+    top: 45%;
+    width: 70px;
+    height: $global-control-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1,18rem;
+  }
+  .sale {
+    color: $global-inverse-color;
+    background-color: $global-muted-color;
+    left: 0;
+  }
+  .new {
+    color: $global-inverse-color;
+    background-color: #000;
+    right: 0;
+  }
+  .price {
+    margin: 17px 0 22px;
+  }
+  .cost {
+    font-size: 2.27rem;
+    color: $base-heading-color;
+    display: inline-block;
+    margin-right: 20px;
+  }
+  .discount-cost {
+    font-size: 1.54rem;
+    color: $global-muted-color;
+    text-decoration: line-through;
+  }
+  .layout-button {
+    justify-content: space-between;
+  }
+  .button-view {
+    font-size: 1.09rem;
+    color: #999e9f;
+    background-color: $global-secondary-background;
+    font-weight: 300;
+  }
+}
+
+.spinner-border {
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: .25em solid $global-muted-color;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner-border .75s linear infinite;
+  animation: spinner-border .75s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spinner-border {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.product-section:not(.loading) .spinner-border {
+  display: none;
+}
