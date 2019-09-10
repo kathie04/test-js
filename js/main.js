@@ -13,19 +13,19 @@ document.addEventListener('DOMContentLoaded', function () {
         productSection.classList.add('loading')
         click = true;
         if (loaded) {
-            productSection.classList.remove('loading')
+            productSection.classList.remove('loading');
             addItem();
         }
     })
 
     function addItem() {
-        productSection.classList.remove('loading')
+        productSection.classList.remove('loading');
         page++;
-        let listItemHidden = document.querySelectorAll('.layout-products li.hidden');
-        let listItem = document.querySelectorAll('.layout-products li');
+        var listItemHidden = document.querySelectorAll('.layout-products li.hidden');
+        var listItem = document.querySelectorAll('.layout-products li');
         var heightItem = listItem[0].offsetHeight;
-        for (var item of listItemHidden) {
-            slideDown(item, heightItem);
+        for (var i = 0; i < listItemHidden.length; i++) {
+            slideDown(listItemHidden[i], heightItem);
         }
         if (listItem.length == dataTotal) {
             button.classList.add('hidden');
@@ -48,11 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
         dataTotal = data.total;
     }
 
-    function dataRequest(page, loadData, ) {
+    function dataRequest(page, loadData) {
         var url = 'list.php?page=' + page;
         var ajaxRequest = new XMLHttpRequest();
         ajaxRequest.open('GET', url);
-        ajaxRequest.addEventListener("readystatechange", () => {
+        ajaxRequest.onreadystatechange = function() {
             if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
                 productSection.classList.remove('loading')
                 loadData(JSON.parse(ajaxRequest.responseText));
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 waitingData();
             }
-        });
+        };
         ajaxRequest.send();
     }
 
